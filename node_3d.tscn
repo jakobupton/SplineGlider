@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://4rjh2s0xglu5"]
+
+[ext_resource type="Script" path="res://TerrainGenerator.cs" id="1_5moiq"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.792141, 0.610339, 0, -0.610339, 0.792141, 0, 1.40212, 1.46723)
+
+[node name="TerrainGenerator" type="Node3D" parent="."]
+script = ExtResource("1_5moiq")
