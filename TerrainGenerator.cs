@@ -25,15 +25,21 @@ public partial class TerrainGenerator : Node3D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		var noise = new FastNoiseLite();
+        noise.NoiseType = FastNoiseLite.NoiseTypeEnum.Perlin;
+        noise.Frequency = 0.032f;
+
         MeshInstance3D land = new MeshInstance3D();
         SurfaceTool st = new SurfaceTool();
         st.Begin(Mesh.PrimitiveType.Triangles);
+
+		float effect = 10;
 
 		for (int z = 0; z < 32; z++) 
 		{
 			for (int x = 0; x < 32; x++) 
 			{
-				AddQuad(st, new Vector2(x, z), new Vector2(1, 1), new Vector4(noise.GetNoise(x, z), noise.GetNoise(x + 1, z), noise.GetNoise(x, z + 1), noise.GetNoise(x + 1, z + 1)));
+				AddQuad(st, new Vector2(x, z), new Vector2(1, 1), new Vector4(noise.GetNoise2D(x, z) * effect, noise.GetNoise2D(x + 1, z) * effect, noise.GetNoise2D(x, z + 1) * effect, noise.GetNoise2D(x + 1, z + 1) * effect));
 			}
 		}
 

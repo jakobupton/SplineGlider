@@ -11,3 +11,8 @@ script = ExtResource("1_3fkk8")
 
 [node name="TerrainGenerator" type="Node3D" parent="."]
 script = ExtResource("1_5moiq")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0145, 9.45676, 16.6866)
+light_energy = 7.303
+omni_range = 394.794
