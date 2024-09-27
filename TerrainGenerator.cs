@@ -4,8 +4,10 @@ public partial class TerrainGenerator : Node3D
 {
 	MeshInstance3D ground;
 	Color _color = Color.Color8(0, 240, 200, 1);
+	const int _width = 256;
+    const float _effect = 16;
 
-	public void AddQuad(SurfaceTool st, Vector2 pos, Vector2 size, Vector4 elevations) 
+    public void AddQuad(SurfaceTool st, Vector2 pos, Vector2 size, Vector4 elevations) 
 	{
 		st.SetColor(_color);
 		st.AddVertex(new Vector3(pos.X,          elevations.X, pos.Y));          // Vertex 0
@@ -33,13 +35,11 @@ public partial class TerrainGenerator : Node3D
         SurfaceTool st = new SurfaceTool();
         st.Begin(Mesh.PrimitiveType.Triangles);
 
-		float effect = 10;
-
-		for (int z = 0; z < 32; z++) 
+		for (int z = (_width/2)*-1; z < (_width / 2); z++) 
 		{
-			for (int x = 0; x < 32; x++) 
+			for (int x = (_width / 2) * -1; x < (_width / 2); x++) 
 			{
-				AddQuad(st, new Vector2(x, z), new Vector2(1, 1), new Vector4(noise.GetNoise2D(x, z) * effect, noise.GetNoise2D(x + 1, z) * effect, noise.GetNoise2D(x, z + 1) * effect, noise.GetNoise2D(x + 1, z + 1) * effect));
+				AddQuad(st, new Vector2(x, z), new Vector2(1, 1), new Vector4(noise.GetNoise2D(x, z) * _effect, noise.GetNoise2D(x + 1, z) * _effect, noise.GetNoise2D(x, z + 1) * _effect, noise.GetNoise2D(x + 1, z + 1) * _effect));
 			}
 		}
 

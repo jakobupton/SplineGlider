@@ -6,13 +6,17 @@
 [node name="Node3D" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.792141, 0.610339, 0, -0.610339, 0.792141, 0, 3.76511, 4.46092)
+transform = Transform3D(1, 0, 0, 0, 0.792141, 0.610339, 0, -0.610339, 0.792141, 0, 30, 0)
 script = ExtResource("1_3fkk8")
 
 [node name="TerrainGenerator" type="Node3D" parent="."]
 script = ExtResource("1_5moiq")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0145, 9.45676, 16.6866)
-light_energy = 7.303
-omni_range = 394.794
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+light_color = Color(0, 0.0196078, 1, 1)
+light_energy = 16.0
+distance_fade_begin = 0.5
+distance_fade_length = 10.65
+omni_range = 2304.78
+omni_attenuation = 0.8
