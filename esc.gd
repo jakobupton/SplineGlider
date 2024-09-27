@@ -5,8 +5,8 @@ func _ready() -> void:
 	# Enable processing every frame
 	set_process(true)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	# Check if the "key_exit" action is pressed
-	if Input.is_action_pressed("Esc"):
+# Called every frame
+func _process(_delta) -> void:
+	# Check if the "Esc" key is pressed
+	if Input.is_action_pressed("ui_cancel"):
 		get_tree().quit()
