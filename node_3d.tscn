@@ -14,6 +14,7 @@ script = ExtResource("1_5moiq")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+visible = false
 light_energy = 19.025
 distance_fade_begin = 0.5
 distance_fade_length = 10.65
