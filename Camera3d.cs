@@ -5,7 +5,7 @@ using System.Security.AccessControl;
 public partial class Camera3d : Camera3D
 {
 	float _direction = 0;
-	float _zdirection = 0;
+	float _ydirection = 0;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -21,12 +21,12 @@ public partial class Camera3d : Camera3D
 		Input.WarpMouse(GetViewport().GetVisibleRect().Size / 2);
 
 		_direction += relativeMousePosition.X * 0.01f;
-		_zdirection += relativeMousePosition.Y * 0.01f;
-		_zdirection = Math.Clamp(_zdirection, -((float)Math.PI * 0.4f), (float)Math.PI * 0.4f);
+		_ydirection += relativeMousePosition.Y * 0.01f;
+		_ydirection = Math.Clamp(_ydirection, -((float)Math.PI * 0.4f), (float)Math.PI * 0.4f);
 		
 		LookAt(new Vector3(
 			Position.X - (float)Math.Cos(_direction), 
-			Position.Y + (float)Math.Tan(_zdirection),
+			Position.Y + (float)Math.Tan(_ydirection),
 			Position.Z + (float)Math.Sin(_direction)
 		));
 
