@@ -1,4 +1,11 @@
 <h1>3D Prototype Landscape</h1>
+<h3>Controls</h3>
+W - Move Forward<br>
+S - Move Backwards<br>
+A - Move Left<br>
+D - Move Right<br>
+Space - Move Up<br>
+Shift - Move Down<br>
 <h3>Contributions</h3>
 <b>Paolo Mazzon</b> - Quad function, first cam function <br>
 <b>Jakob Upton</b> - FastNoiseLite, freecam <br>
