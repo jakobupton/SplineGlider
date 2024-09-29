@@ -42,7 +42,7 @@ public partial class TerrainGenerator : Node3D
         noise.FractalOctaves = 4;
         
         // Create an image to store noise values for visualization or texture use
-        Image noiseImage = Image.Create(_width, _width, false, Image.Format.Rgb8);
+        Image noiseImage = Image.CreateEmpty(_width, _width, false, Image.Format.Rgb8);
 
         // Loop through each pixel in the image and assign a grayscale value based on noise
         for (int z = 0; z < _width; z++)
