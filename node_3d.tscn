@@ -1,11 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://4rjh2s0xglu5"]
+[gd_scene load_steps=3 format=3 uid="uid://4rjh2s0xglu5"]
 
 [ext_resource type="Script" path="res://Camera3d.cs" id="1_3fkk8"]
 [ext_resource type="Script" path="res://TerrainGenerator.cs" id="1_5moiq"]
-[ext_resource type="Script" path="res://esc.gd" id="1_mugp7"]
 
 [node name="Node3D" type="Node3D"]
-script = ExtResource("1_mugp7")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.792141, 0.610339, 0, -0.610339, 0.792141, 0, 30, 0)

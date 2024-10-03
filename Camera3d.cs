@@ -17,6 +17,12 @@ public partial class Camera3d : Camera3D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		// Handle closing the window
+		if (Input.IsKeyPressed(Key.Escape)) 
+		{
+			GetTree().Quit();
+		}
+
 		// Handling movement input (WASD for forward/backward/strafe, Space for up, Shift for down)
 		float forward = Input.IsKeyPressed(Key.W) ? -1 : 0;
 		float backward = Input.IsKeyPressed(Key.S) ? 1 : 0;
