@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://4rjh2s0xglu5"]
+[gd_scene load_steps=4 format=3 uid="uid://4rjh2s0xglu5"]
 
 [ext_resource type="Script" path="res://Camera3d.cs" id="1_3fkk8"]
 [ext_resource type="Script" path="res://TerrainGenerator.cs" id="1_5moiq"]
+[ext_resource type="Script" path="res://ImageTester.cs" id="3_mmy3f"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -20,3 +21,9 @@ distance_fade_begin = 0.5
 distance_fade_length = 10.65
 omni_range = 2304.78
 omni_attenuation = 0.8
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ImageTester" type="Node2D" parent="CanvasLayer"]
+texture_filter = 1
+script = ExtResource("3_mmy3f")
