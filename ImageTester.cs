@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+using System.Collections.Generic;
 public partial class ImageTester : Node2D
 {
 	ImageTexture _tex;
@@ -11,9 +11,18 @@ public partial class ImageTester : Node2D
 		var img = Image.CreateEmpty(100, 100, false, Image.Format.Rgba8);
 
 		// Test the curve
-		var list = new Vector3[] {new Vector3(45, 90, 0), new Vector3(10, 10, 0), new Vector3(50, 90, 0)};
-		var points = BezierCurve.MakeCurve(list);
-		
+		Vector3[] points =
+		{
+			new Vector3(0,0,0),
+			new Vector3(5,40,0),
+			new Vector3(80,40,0),
+			new Vector3(50,0,0),
+            new Vector3(90,10,0),
+
+        };
+
+		List<Vector3> bezier = BezierCurve.MakeCurve(points);
+
 		// Fill with black
 		for (int y = 0; y < 100; y++)
 		{
