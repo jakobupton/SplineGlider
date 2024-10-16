@@ -10,21 +10,21 @@ public partial class ImageTester : Node2D
 	{
 		var img = Image.CreateEmpty(100, 100, false, Image.Format.Rgba8);
 
-		// Test the curve
-		Vector3[] points =
-		{
-			new Vector3(0,0,0),
-			new Vector3(5,40,0),
-			new Vector3(80,40,0),
-			new Vector3(50,0,0),
-            new Vector3(90,10,0),
+        Vector3 p0 = new Vector3(30, 10, 0);
+        Vector3 p1 = new Vector3(10, 40, 0);
+        Vector3 p2 = new Vector3(80, 60, 0);
+        Vector3 p3 = new Vector3(50, 80, 0);
 
-        };
+        List<Vector3> points = new List<Vector3>();
 
-		List<Vector3> bezier = BezierCurve.MakeCurve(points);
+        for (float t = 0f; t <= 1; t += 0.01f)
+        {
+            Vector3 point = BezierCurve.MakeCurve(p0, p1, p2, p3, t);
+            points.Add(point);
+        }
 
-		// Fill with black
-		for (int y = 0; y < 100; y++)
+        // Fill with black
+        for (int y = 0; y < 100; y++)
 		{
 			for (int x = 0; x < 100; x++)
 			{
