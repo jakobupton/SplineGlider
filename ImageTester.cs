@@ -10,12 +10,7 @@ public partial class ImageTester : Node2D
 	{
 		var img = Image.CreateEmpty(100, 100, false, Image.Format.Rgba8);
 
-        Vector3 p0 = new Vector3(25, 25, 0);
-        Vector3 p1 = new Vector3(38, 7, 0);
-        Vector3 p2 = new Vector3(95, 50, 0);
-        Vector3 p3 = new Vector3(75, 75, 0);
-
-        List<Vector3> points = BezierCurve.MakeCurve(p0, p1, p2, p3);
+        List<Vector3> points = BezierCurve.GetBakedCurve();
 
         // Fill with black
         for (int y = 0; y < 100; y++)

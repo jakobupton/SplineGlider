@@ -43,6 +43,20 @@ public class BezierCurve
         return s;
     }
 
+    // Returns a list with an example curve, cacheing the results so this method is quick
+    public static List<Vector3> GetBakedCurve() 
+    {
+        if (bakedCurve == null)
+        {
+            Vector3 p0 = new Vector3(25, 25, 0);
+            Vector3 p1 = new Vector3(38, 7, 0);
+            Vector3 p2 = new Vector3(95, 50, 0);
+            Vector3 p3 = new Vector3(75, 75, 0);
+            bakedCurve = MakeCurve(p0, p1, p2, p3);
+        }
+        return bakedCurve;
+    }
+
     // Whatever you make with this becomes this class's baked curve
     public static List<Vector3> MakeCurve(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3) 
     {
@@ -64,7 +78,6 @@ public class BezierCurve
             spots.Add(Bezier(p3, p22, p12, p0, i));
         }
 
-        bakedCurve = spots;
-        return bakedCurve;
+        return spots;
     }
 }
