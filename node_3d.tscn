@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://4rjh2s0xglu5"]
+[gd_scene load_steps=9 format=3 uid="uid://4rjh2s0xglu5"]
 
 [ext_resource type="Script" path="res://Camera3d.cs" id="1_3fkk8"]
 [ext_resource type="Script" path="res://TerrainGenerator.cs" id="1_5moiq"]
 [ext_resource type="Script" path="res://ImageTester.cs" id="3_mmy3f"]
+[ext_resource type="Script" path="res://BezierCurve.cs" id="4_ks8al"]
+[ext_resource type="Script" path="res://BezierPath.cs" id="5_vbxx7"]
+[ext_resource type="Script" path="res://PathMovement.cs" id="6_aroyx"]
+[ext_resource type="PackedScene" uid="uid://cg1ff7nvfjlm0" path="res://glider.glb" id="6_rqivu"]
+
+[sub_resource type="Curve2D" id="Curve2D_ughmt"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -27,3 +33,16 @@ omni_attenuation = 0.8
 [node name="ImageTester" type="Node2D" parent="CanvasLayer"]
 texture_filter = 1
 script = ExtResource("3_mmy3f")
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("4_ks8al")
+
+[node name="Path2D" type="Path2D" parent="Node2D"]
+scale = Vector2(20.275, 20.275)
+curve = SubResource("Curve2D_ughmt")
+script = ExtResource("5_vbxx7")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Node2D/Path2D"]
+script = ExtResource("6_aroyx")
+
+[node name="glider2" parent="Node2D/Path2D/PathFollow2D" instance=ExtResource("6_rqivu")]
