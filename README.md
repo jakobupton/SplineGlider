@@ -20,5 +20,5 @@ Shift - Move Down<br>
 <b>Wilson Agyapong</b> - Weather <br>
 <b>Isaac Mrowka</b> - Bezier Function help, ReadME <br>
 <b>Steven Furlong</b> - Camera Control <br>
-<b>Jasjeet Singh</b> - Noise function trial 1 <br>
-<b>Dewang Marya</b> - Noise function trial 1 <br>
+<b>Jasjeet Singh</b> - Pathfollow for sprites  <br>
+<b>Dewang Marya</b> - Pathfollow for sprites <br>
