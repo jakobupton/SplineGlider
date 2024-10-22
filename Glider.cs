@@ -73,7 +73,11 @@ public partial class Glider : MeshInstance3D
             currentPosition
         );
         
-        Position += direction * Speed * (float)delta * 100;
+        Position += direction * Speed * (float)delta;
     }
     
+    public Vector3 GetGliderPosition()
+    {
+        return Position;
+    }
 }
