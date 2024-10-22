@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public partial class BezierCurve : Node2D
 {
-    // Function to calculate a point on the cubic Bézier curve
+    // Function to calculate a point on the cubic Bezier curve
     public static Vector3 MakeCurve(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
     {
         Vector3 q0 = p0.Lerp(p1, t);
