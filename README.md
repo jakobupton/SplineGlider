@@ -14,3 +14,11 @@ Shift - Move Down<br>
 <b>Steven Furlong</b> - Formatting, proofreading, comments, esc key function <br>
 <b>Jasjeet Singh</b> - Noise function trial 1 <br>
 <b>Dewang Marya</b> - Noise function trial 1 <br>
+<h3>Contributions for assignment 2 </h3>
+<b>Paolo Mazzon</b> - Bezier Function, Project Layout <br>
+<b>Jakob Upton</b> - Glider Position <br>
+<b>Wilson Agyapong</b> - Weather <br>
+<b>Isaac Mrowka</b> - Bezier Function help, ReadME <br>
+<b>Steven Furlong</b> - Camera Control <br>
+<b>Jasjeet Singh</b> - Noise function trial 1 <br>
+<b>Dewang Marya</b> - Noise function trial 1 <br>
