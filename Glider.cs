@@ -80,4 +80,9 @@ public partial class Glider : MeshInstance3D
     {
         return Position;
     }
+
+    public Quaternion GetGliderRotation()
+    {
+        return Transform.Basis.GetRotationQuaternion();
+    }
 }
