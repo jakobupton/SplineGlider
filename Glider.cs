@@ -31,7 +31,7 @@ public partial class Glider : MeshInstance3D
         
         // Calculate direction
         Vector3 direction = targetPosition - currentPosition;
-        float distance = direction.Length();
+        float distance = direction.Length(); 
         
         // check if we're at waypoint
         if (distance < WaypointThreshold)
@@ -43,7 +43,7 @@ public partial class Glider : MeshInstance3D
         direction = direction.Normalized(); 
         
         // Create target rotation
-        Vector3 targetForward = -direction;
+        Vector3 targetForward = Vector3.Forward.Cross(direction).Normalized();
         Vector3 targetRight = Vector3.Up.Cross(targetForward).Normalized();
         Vector3 targetUp = targetForward.Cross(targetRight).Normalized();
         

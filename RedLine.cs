@@ -16,7 +16,7 @@ public partial class RedLine : Sprite3D
         // Put the grid contents to the image
         foreach (var point in points)
         {
-            img.SetPixel((int)point.X, (int)point.Y, Color.Color8(255, 0, 0));
+            img.SetPixel((int)point.X, (int)point.Z, Color.Color8(255, 0, 0));
         }
 
         // The output texture
