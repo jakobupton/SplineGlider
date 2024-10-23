@@ -24,7 +24,7 @@ public partial class ImageTester : Node2D
 		// Put the grid contents to the image
 		foreach (var point in points)
 		{
-			img.SetPixel((int)point.X, (int)point.Y, Color.Color8(255, 255, 255));
+			img.SetPixel((int)point.X, (int)point.Z, Color.Color8(255, 255, 255));
 		}
 
 		// The output texture

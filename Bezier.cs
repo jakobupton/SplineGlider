@@ -13,20 +13,20 @@ public class BezierCurve
     public static Vector3 ReflectPoint(Vector3 point, Vector3 linePoint1, Vector3 linePoint2)
     {
         // Find line components
-        float m = (linePoint2.Y - linePoint1.Y) / (linePoint2.X - linePoint1.X);
-        float b = linePoint2.Y - (linePoint2.X * m);
+        float m = (linePoint2.Z - linePoint1.Z) / (linePoint2.X - linePoint1.X);
+        float b = linePoint2.Z - (linePoint2.X * m);
         float perpendicular = -1.0f / m;
 
         // Get point in line where the other point is perpendicular
-        float xInt = (m * point.X - point.Y + b) / (m - perpendicular);
-        xInt = (point.X + (m * (point.Y - b))) / ((m * m) + 1);
-        float yInt = m * xInt + b;
+        float xInt = (m * point.X - point.Z + b) / (m - perpendicular);
+        xInt = (point.X + (m * (point.Z - b))) / ((m * m) + 1);
+        float zInt = m * xInt + b;
         
         // Reflect point
         float xOut = (2 * xInt) - point.X;
-        float yOut = (2 * yInt) - point.Y;
+        float zOut = (2 * zInt) - point.Z;
 
-        return new Vector3(xOut, yOut, point.Z);
+        return new Vector3(xOut, point.Y, zOut); // Y is not affected
     }
 
     // From Godot documentation - https://docs.godotengine.org/en/stable/tutorials/math/beziers_and_curves.html
@@ -48,10 +48,10 @@ public class BezierCurve
     {
         if (bakedCurve == null)
         {
-            Vector3 p0 = new Vector3(25, 25, 0);
-            Vector3 p1 = new Vector3(38, 7, 0);
-            Vector3 p2 = new Vector3(95, 50, 0);
-            Vector3 p3 = new Vector3(75, 75, 0);
+            Vector3 p0 = new Vector3(25, 20, 25);
+            Vector3 p1 = new Vector3(38, 20, 7);
+            Vector3 p2 = new Vector3(95, 20, 50);
+            Vector3 p3 = new Vector3(75, 20, 75);
             bakedCurve = MakeCurve(p0, p1, p2, p3);
         }
         return bakedCurve;
