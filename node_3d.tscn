@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://4rjh2s0xglu5"]
+[gd_scene load_steps=11 format=4 uid="uid://4rjh2s0xglu5"]
 
 [ext_resource type="Script" path="res://Camera3d.cs" id="1_3fkk8"]
 [ext_resource type="Script" path="res://TerrainGenerator.cs" id="1_5moiq"]
 [ext_resource type="Script" path="res://ImageTester.cs" id="3_mmy3f"]
 [ext_resource type="Script" path="res://Glider.cs" id="4_hi4h6"]
 [ext_resource type="Script" path="res://RedLine.cs" id="5_duw77"]
+[ext_resource type="Script" path="res://Weather.cs" id="6_j02ep"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tyfu7"]
 resource_name = "glaze"
@@ -47,6 +48,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_iwy5f")
 
+[sub_resource type="SphereMesh" id="SphereMesh_5phuv"]
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -79,3 +82,13 @@ script = ExtResource("4_hi4h6")
 
 [node name="RedLine" type="Sprite3D" parent="."]
 script = ExtResource("5_duw77")
+
+[node name="Weather" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.280188, 0)
+script = ExtResource("6_j02ep")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Weather"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30077, 0)
+mesh = SubResource("SphereMesh_5phuv")
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0, 0, 1)
