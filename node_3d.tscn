@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://4rjh2s0xglu5"]
+[gd_scene load_steps=9 format=4 uid="uid://4rjh2s0xglu5"]
 
 [ext_resource type="Script" path="res://Camera3d.cs" id="1_3fkk8"]
 [ext_resource type="Script" path="res://TerrainGenerator.cs" id="1_5moiq"]
 [ext_resource type="Script" path="res://ImageTester.cs" id="3_mmy3f"]
 [ext_resource type="Script" path="res://Glider.cs" id="4_hi4h6"]
+[ext_resource type="Script" path="res://RedLine.cs" id="5_duw77"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tyfu7"]
 resource_name = "glaze"
@@ -67,6 +68,7 @@ omni_attenuation = 0.8
 
 [node name="ImageTester" type="Node2D" parent="CanvasLayer"]
 texture_filter = 1
+position = Vector2(8, 0)
 script = ExtResource("3_mmy3f")
 
 [node name="Glider" type="MeshInstance3D" parent="."]
@@ -74,3 +76,6 @@ transform = Transform3D(0.01, 0, 0, 0, 0, -0.01, 0, 0.01, 0, 0, 0, 0)
 mesh = SubResource("ArrayMesh_moxpy")
 skeleton = NodePath("")
 script = ExtResource("4_hi4h6")
+
+[node name="RedLine" type="Sprite3D" parent="."]
+script = ExtResource("5_duw77")
