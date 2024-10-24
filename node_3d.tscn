@@ -83,7 +83,7 @@ position = Vector2(8, 0)
 script = ExtResource("3_mmy3f")
 
 [node name="Glider" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.01, 0, 0, 0, 0, -0.01, 0, 0.01, 0, 0, 0, 0)
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 mesh = SubResource("ArrayMesh_moxpy")
 skeleton = NodePath("")
 script = ExtResource("4_hi4h6")
@@ -92,21 +92,11 @@ script = ExtResource("4_hi4h6")
 script = ExtResource("5_duw77")
 
 [node name="Weather" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5277, 8.80448, -9.4698)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.280188, 0)
 script = ExtResource("6_j02ep")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="Weather"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.63498, -0.58135, 0.278734)
-amount = 20
-lifetime = 0.25
-speed_scale = 0.7
-randomness = 0.54
-mesh = SubResource("SphereMesh_oqp46")
-spread = 50.0
-gravity = Vector3(2, 18, 2)
-initial_velocity_min = 3.0
-initial_velocity_max = 5.0
-scale_amount_min = 2.0
-scale_amount_max = 2.0
-scale_amount_curve = SubResource("Curve_uruqe")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30077, 0)
+mesh = SubResource("SphereMesh_5phuv")
+gravity = Vector3(0, 0, 0)
 color = Color(0, 0, 0, 1)
