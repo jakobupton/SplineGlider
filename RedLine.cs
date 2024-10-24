@@ -8,7 +8,7 @@ public partial class RedLine : Sprite3D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        var img = Image.CreateEmpty(200, 200, false, Image.Format.Rgba8);
+        var img = Image.CreateEmpty(201, 201, false, Image.Format.Rgba8);
 
         List<Vector3> points = BezierCurve.GetBakedCurve();
 
@@ -21,9 +21,11 @@ public partial class RedLine : Sprite3D
 
         // The output texture
         _tex = ImageTexture.CreateFromImage(img);
-
         Texture = _tex;
-        Scale = new Vector3(-100, 100, 1); // Adjust the scale as needed
 
+        // Transform of image in 3d space
+        Scale = new Vector3(-100, 100, 1);
+        Rotation = new Vector3(1.57f, 0, 0);
+        Position = new Vector3(0, 19.9f, 0);
     }
 }
