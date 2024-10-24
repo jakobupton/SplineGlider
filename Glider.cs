@@ -18,7 +18,8 @@ public partial class Glider : MeshInstance3D
         initialScale = Scale;
         
         waypoints = new List<Vector3>(BezierCurve.GetBakedCurve());
-		isMoving = true;
+        isMoving = true;
+        Position = waypoints[0]; // start at first waypoint
     }
     
     public override void _Process(double delta)
@@ -40,40 +41,19 @@ public partial class Glider : MeshInstance3D
             return;
         }
         
-        direction = direction.Normalized(); 
+        direction = direction.Normalized();
         
-        // Create target rotation
-        Vector3 targetForward = Vector3.Forward.Cross(direction).Normalized();
-        Vector3 targetRight = Vector3.Up.Cross(targetForward).Normalized();
-        Vector3 targetUp = targetForward.Cross(targetRight).Normalized();
-        
-        // Create target transform
-        Transform3D targetTransform = new Transform3D(
-            targetRight * initialScale.X,
-            targetUp * initialScale.Y,
-            targetForward * initialScale.Z,
-            currentPosition
-        );
-        
-        // get our current rotation and our target rotation as quaternions
-        Quaternion currentRotation = Transform.Basis.GetRotationQuaternion();
-        Quaternion targetRotation = targetTransform.Basis.GetRotationQuaternion();
-        
-        // normalize to avoid weirdness
-        currentRotation = currentRotation.Normalized();
-        targetRotation = targetRotation.Normalized();
-    
-
-        float rotationWeight = Mathf.Clamp((float)delta * RotationSpeed, 0f, 1f);
-        Quaternion newRotation = currentRotation.Slerp(targetRotation, rotationWeight);
-        
-        // idk if we even need this scale stuff, but it was doing weird stuff
-        Transform = new Transform3D(
-            new Basis(newRotation).Scaled(initialScale),
-            currentPosition
-        );
-        
+        // Move towards target
         Position += direction * Speed * (float)delta;
+
+        // Rotating glider
+        Transform = Transform.LookingAt(targetPosition, Vector3.Up);
+        
+        // Rotations to make the object face the right way 
+        RotateObjectLocal(Vector3.Up, Mathf.Pi);
+        RotateObjectLocal(Vector3.Right, Mathf.Pi / 2);
+        
+        Scale = initialScale * (1.0f - (distance / 100.0f));
     }
     
     public Vector3 GetGliderPosition()
