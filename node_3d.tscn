@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://4rjh2s0xglu5"]
+[gd_scene load_steps=12 format=4 uid="uid://4rjh2s0xglu5"]
 
 [ext_resource type="Script" path="res://Camera3d.cs" id="1_3fkk8"]
 [ext_resource type="Script" path="res://TerrainGenerator.cs" id="1_5moiq"]
@@ -48,7 +48,15 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_iwy5f")
 
-[sub_resource type="SphereMesh" id="SphereMesh_5phuv"]
+[sub_resource type="SphereMesh" id="SphereMesh_oqp46"]
+radius = 1.4
+height = 2.8
+radial_segments = 6
+rings = 5
+
+[sub_resource type="Curve" id="Curve_uruqe"]
+_data = [Vector2(0.0241935, 0), 0.0, 1.5691, 0, 0, Vector2(0.33871, 0.186813), 0.0, 0.0, 0, 0, Vector2(1, 0.362637), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="Node3D" type="Node3D"]
 
@@ -84,11 +92,21 @@ script = ExtResource("4_hi4h6")
 script = ExtResource("5_duw77")
 
 [node name="Weather" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.280188, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5277, 8.80448, -9.4698)
 script = ExtResource("6_j02ep")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="Weather"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30077, 0)
-mesh = SubResource("SphereMesh_5phuv")
-gravity = Vector3(0, 0, 0)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.63498, -0.58135, 0.278734)
+amount = 20
+lifetime = 0.25
+speed_scale = 0.7
+randomness = 0.54
+mesh = SubResource("SphereMesh_oqp46")
+spread = 50.0
+gravity = Vector3(2, 18, 2)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_uruqe")
 color = Color(0, 0, 0, 1)
