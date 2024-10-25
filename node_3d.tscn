@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://4rjh2s0xglu5"]
+[gd_scene load_steps=15 format=4 uid="uid://4rjh2s0xglu5"]
 
 [ext_resource type="Script" path="res://Camera3d.cs" id="1_3fkk8"]
 [ext_resource type="Script" path="res://TerrainGenerator.cs" id="1_5moiq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Glider.cs" id="4_hi4h6"]
 [ext_resource type="Script" path="res://GpuParticles3d.cs" id="5_jfo2e"]
 [ext_resource type="Script" path="res://RedLine.cs" id="6_cxhyv"]
+[ext_resource type="Script" path="res://weatherposition.cs" id="7_cdfa2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tyfu7"]
 resource_name = "glaze"
@@ -107,4 +108,4 @@ speed_scale = 1.24
 randomness = 0.55
 process_material = SubResource("ParticleProcessMaterial_5uupe")
 draw_pass_1 = SubResource("SphereMesh_j7ff2")
-script = ExtResource("5_jfo2e")
+script = ExtResource("7_cdfa2")
