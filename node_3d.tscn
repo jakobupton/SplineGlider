@@ -88,11 +88,8 @@ mesh = SubResource("ArrayMesh_moxpy")
 skeleton = NodePath("")
 script = ExtResource("4_hi4h6")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-script = ExtResource("6_cxhyv")
-
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
-transform = Transform3D(-8.74228e-09, -0.2, 0, 0.2, -8.74228e-09, 0, 0, 0, 0.2, 0, -4.9701, -0.930158)
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Glider"]
+transform = Transform3D(-8.74228e-07, -20, 0, 20, -8.74228e-07, 0, 0, 0, 20, 0, -497.01, -93.0158)
 amount = 20
 lifetime = 0.25
 speed_scale = 0.7
@@ -105,3 +102,7 @@ initial_velocity_max = 5.0
 angular_velocity_max = 0.15
 scale_amount_curve = SubResource("Curve_1mbi2")
 script = ExtResource("6_q8524")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0348768, 0)
+script = ExtResource("6_cxhyv")
