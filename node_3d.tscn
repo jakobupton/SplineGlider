@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://4rjh2s0xglu5"]
+[gd_scene load_steps=16 format=4 uid="uid://4rjh2s0xglu5"]
 
 [ext_resource type="Script" path="res://Camera3d.cs" id="1_3fkk8"]
 [ext_resource type="Script" path="res://TerrainGenerator.cs" id="1_5moiq"]
@@ -56,12 +56,18 @@ shadow_mesh = SubResource("ArrayMesh_iwy5f")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5uupe"]
 emission_shape = 3
 emission_box_extents = Vector3(25, 1, 25)
-turbulence_enabled = true
+initial_velocity_min = 6.99
+initial_velocity_max = 6.99
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
 turbulence_noise_scale = 4.65
 
 [sub_resource type="SphereMesh" id="SphereMesh_j7ff2"]
-radius = 0.05
-height = 0.1
+radius = 0.01
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdc3y"]
+albedo_color = Color(0.175944, 0.805845, 0.824918, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -107,6 +113,17 @@ lifetime = 8.41
 speed_scale = 1.24
 randomness = 0.55
 visibility_aabb = AABB(-20, -4, -20, 40, 40, 40)
+process_material = SubResource("ParticleProcessMaterial_5uupe")
+draw_pass_1 = SubResource("SphereMesh_j7ff2")
+script = ExtResource("7_cdfa2")
+
+[node name="rain" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_gdc3y")
+amount = 3875
+lifetime = 8.41
+speed_scale = 6.61
+randomness = 0.55
+visibility_aabb = AABB(-20, -10, -20, 40, 40, 40)
 process_material = SubResource("ParticleProcessMaterial_5uupe")
 draw_pass_1 = SubResource("SphereMesh_j7ff2")
 script = ExtResource("7_cdfa2")
