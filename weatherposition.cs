@@ -4,7 +4,7 @@ using System;
 public partial class weatherposition: GpuParticles3D
 {
     private Glider glider;
-    private Vector3 offset = new Vector3(0, 75, 0); // Adjust this offset as needed
+    private Vector3 offset = new Vector3(5, 10, 0); // Adjust this offset as needed
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
