@@ -11,7 +11,7 @@
 ## References and Link to Repo
 https://github.com/jakobupton/SplineGlider
 
-**Camera Implementation**
+**Camera Implementation References**
 - https://godotengine.org/asset-library/asset/3008
 - https://forum.godotengine.org/t/camera-rotation-problems-with-gamepad/84262
 - https://forum.godotengine.org/t/achieving-better-mouse-input-in-godot-4-the-perfect-camera-controller/44084
