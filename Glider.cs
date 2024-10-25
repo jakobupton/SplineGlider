@@ -73,6 +73,7 @@ public partial class Glider : MeshInstance3D
         RotateObjectLocal(Vector3.Up, Mathf.Pi);
         RotateObjectLocal(Vector3.Right, Mathf.Pi / 2);
 
+        /*
         // Tilt with the turns
         var targetTurn = 0.0f;
         var previousAngle = targetPosition.AngleTo(nextTargetPosition);
@@ -82,7 +83,18 @@ public partial class Glider : MeshInstance3D
         else if (previousAngle < currentAngle)
             targetTurn = -0.3f;
         turningAmount = turningAmount + ((targetTurn - turningAmount) * 0.5f * (float)delta);
-        RotateObjectLocal(Vector3.ModelTop, turningAmount);
+        RotateObjectLocal(Vector3.ModelTop, turningAmount); 
+        */
+
+        // get future waypoint
+        Vector3 nextWaypoint = waypoints[(currentWaypointIndex + 1) % waypoints.Count];
+        // get future direction
+        Vector3 futureDirection = (nextWaypoint - targetPosition).Normalized();
+        
+        // cross product to get the perpendicular vector of direction-future direction plane
+        // Length function gets the magnitude of the roll angle.
+        float rollAngle = futureDirection.Cross(direction).Length();
+        RotateObjectLocal(Vector3.ModelTop, rollAngle * 2); //multiplied by 2 to increase intensity
         
         Scale = initialScale * (1.0f - (distance / 100.0f));
     }
