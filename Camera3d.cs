@@ -5,7 +5,7 @@ public partial class Camera3d : Camera3D
 {
     float _yaw = 0;  // Horizontal (yaw) rotation of the camera
     float _pitch = 0;  // Vertical (pitch) rotation of the camera
-    Vector3 _offset = new Vector3(0, 2, -10);  // Initial offset from the glider
+    Vector3 _offset = new Vector3(0, 5, -15);  // Initial offset from the glider
     Node3D _glider;  // Reference to the glider
 
     public override void _Ready()
