@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=4 uid="uid://4rjh2s0xglu5"]
+[gd_scene load_steps=17 format=4 uid="uid://4rjh2s0xglu5"]
 
 [ext_resource type="Script" path="res://Camera3d.cs" id="1_3fkk8"]
 [ext_resource type="Script" path="res://TerrainGenerator.cs" id="1_5moiq"]
+[ext_resource type="Script" path="res://WeatherController.cs" id="1_xl4hw"]
 [ext_resource type="Script" path="res://ImageTester.cs" id="3_mmy3f"]
 [ext_resource type="Script" path="res://Glider.cs" id="4_hi4h6"]
 [ext_resource type="Script" path="res://GpuParticles3d.cs" id="5_jfo2e"]
@@ -70,6 +71,7 @@ height = 0.2
 albedo_color = Color(0.175944, 0.805845, 0.824918, 1)
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_xl4hw")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.792141, 0.610339, 0, -0.610339, 0.792141, 0, 30, 0)
@@ -108,7 +110,7 @@ script = ExtResource("5_jfo2e")
 script = ExtResource("6_cxhyv")
 
 [node name="snow" type="GPUParticles3D" parent="."]
-amount = 1800
+amount = 2500
 lifetime = 8.41
 speed_scale = 1.24
 randomness = 0.55
