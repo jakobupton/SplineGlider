@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://TerrainGenerator.cs" id="1_5moiq"]
 [ext_resource type="Script" path="res://ImageTester.cs" id="3_mmy3f"]
 [ext_resource type="Script" path="res://Glider.cs" id="4_hi4h6"]
-[ext_resource type="Script" path="res://GpuParticles3d.cs" id="5_jfo2e"]
 [ext_resource type="Script" path="res://RedLine.cs" id="6_cxhyv"]
+[ext_resource type="Script" path="res://CpuParticles3d.cs" id="6_q8524"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tyfu7"]
 resource_name = "glaze"
@@ -48,9 +48,15 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_iwy5f")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1r55l"]
+[sub_resource type="SphereMesh" id="SphereMesh_qs4ld"]
+radius = 1.4
+height = 2.8
+radial_segments = 5
+rings = 6
 
-[sub_resource type="SphereMesh" id="SphereMesh_l4um4"]
+[sub_resource type="Curve" id="Curve_1mbi2"]
+_data = [Vector2(0.0403226, 0), 0.0, 0.0, 0, 0, Vector2(0.330645, 0.296703), 0.0, 0.0, 0, 0, Vector2(1, 0.461538), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="Node3D" type="Node3D"]
 
@@ -82,10 +88,20 @@ mesh = SubResource("ArrayMesh_moxpy")
 skeleton = NodePath("")
 script = ExtResource("4_hi4h6")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-process_material = SubResource("ParticleProcessMaterial_1r55l")
-draw_pass_1 = SubResource("SphereMesh_l4um4")
-script = ExtResource("5_jfo2e")
-
 [node name="Sprite3D" type="Sprite3D" parent="."]
 script = ExtResource("6_cxhyv")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(-8.74228e-09, -0.2, 0, 0.2, -8.74228e-09, 0, 0, 0, 0.2, 0, -4.9701, -0.930158)
+amount = 20
+lifetime = 0.25
+speed_scale = 0.7
+randomness = 0.54
+mesh = SubResource("SphereMesh_qs4ld")
+spread = 50.0
+gravity = Vector3(2, 10, 1)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+angular_velocity_max = 0.15
+scale_amount_curve = SubResource("Curve_1mbi2")
+script = ExtResource("6_q8524")
