@@ -18,4 +18,4 @@ https://github.com/jakobupton/SplineGlider
 - https://forum.godotengine.org/t/rotate-characterbody3d-using-camera-transform/67009
 - https://forum.godotengine.org/t/how-to-make-the-camera-moves-by-the-mouse-in-3d/24201/2
 - https://github.com/godotengine/godot-proposals/issues/6389
-Along with some phind assistance for quickly converting GDScript provided by sources to C#.
+- Some phind assistance for quickly converting GDScript provided by sources to C#.
