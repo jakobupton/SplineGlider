@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://4rjh2s0xglu5"]
+[gd_scene load_steps=14 format=4 uid="uid://4rjh2s0xglu5"]
 
 [ext_resource type="Script" path="res://Camera3d.cs" id="1_3fkk8"]
 [ext_resource type="Script" path="res://TerrainGenerator.cs" id="1_5moiq"]
@@ -52,6 +52,15 @@ shadow_mesh = SubResource("ArrayMesh_iwy5f")
 
 [sub_resource type="SphereMesh" id="SphereMesh_l4um4"]
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5uupe"]
+emission_shape = 3
+emission_box_extents = Vector3(10, 1, 10)
+turbulence_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_j7ff2"]
+radius = 0.05
+height = 0.1
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -89,3 +98,13 @@ script = ExtResource("5_jfo2e")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 script = ExtResource("6_cxhyv")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0)
+amount = 800
+lifetime = 8.41
+speed_scale = 1.24
+randomness = 0.55
+process_material = SubResource("ParticleProcessMaterial_5uupe")
+draw_pass_1 = SubResource("SphereMesh_j7ff2")
+script = ExtResource("5_jfo2e")
