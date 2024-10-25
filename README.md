@@ -5,8 +5,8 @@
 - **Wilson Agyapong**: Particles
 - **Isaac Mrowka**: Bezier Function Help, Red Line
 - **Steven Furlong**: Camera Implementation
-- **Jasjeet Singh**:
-- **Dewang Marya**:
+- **Jasjeet Singh**: snow, rain, controls
+- **Dewang Marya**: snow, rain, toggle weather, controls
 
 ## References and Link to Repo
 https://github.com/jakobupton/SplineGlider
@@ -23,3 +23,10 @@ https://github.com/jakobupton/SplineGlider
 - https://docs.godotengine.org/en/stable/tutorials/3d/using_transforms.html
 - https://docs.godotengine.org/en/stable/tutorials/math/vector_math.html
 - https://docs.godotengine.org/en/stable/classes/class_meshinstance3d.html
+### Weather implementation References ###
+- https://docs.godotengine.org/en/stable/classes/class_gpuparticles3d.html
+- https://docs.godotengine.org/en/stable/classes/class_inputmap.html#class-inputmap
+- https://www.youtube.com/watch?v=fPc-Zz4eIxk
+- https://docs.godotengine.org/en/stable/classes/class_label.html
+- https://docs.godotengine.org/en/stable/classes/class_geometryinstance3d.html
+
