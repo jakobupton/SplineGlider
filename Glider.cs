@@ -18,9 +18,12 @@ public partial class Glider : MeshInstance3D
     
     public override void _Ready()
     {
-        initialScale = Scale;
-        
+        // Remove the problem waypoints that cause jittering
         waypoints = new List<Vector3>(BezierCurve.GetBakedCurve());
+        waypoints.RemoveAt(0);
+        waypoints.RemoveAt(waypoints.Count / 2);
+
+        initialScale = Scale;
         isMoving = true;
         Position = waypoints[0]; // start at first waypoint
     }
@@ -42,7 +45,6 @@ public partial class Glider : MeshInstance3D
         // Various important positions in the game world
         Vector3 targetPosition = waypoints[currentWaypointIndex];
         Vector3 nextTargetPosition = getWaypoint(currentWaypointIndex + 1);
-        Vector3 nextNextTargetPosition = getWaypoint(currentWaypointIndex + 2);
         Vector3 currentPosition = Position;
         
         // Calculate direction
@@ -66,25 +68,11 @@ public partial class Glider : MeshInstance3D
         // Look at where the glider is supposed to face
         var lookAtCurrentNode = Transform.LookingAt(targetPosition, Vector3.Up);
         var lookAtNextNode = Transform.LookingAt(nextTargetPosition, Vector3.Up);
-        // TODO: Interpolation breaks down at the point where the two curves meet, need to look into the waypoints
         Transform = lookAtNextNode.InterpolateWith(lookAtCurrentNode, interpolationWeight); 
         
         // Rotations to make the object face the right way 
         RotateObjectLocal(Vector3.Up, Mathf.Pi);
         RotateObjectLocal(Vector3.Right, Mathf.Pi / 2);
-
-        /*
-        // Tilt with the turns
-        var targetTurn = 0.0f;
-        var previousAngle = targetPosition.AngleTo(nextTargetPosition);
-        var currentAngle = nextTargetPosition.AngleTo(nextNextTargetPosition);
-        if (previousAngle > currentAngle)
-            targetTurn = 0.3f;
-        else if (previousAngle < currentAngle)
-            targetTurn = -0.3f;
-        turningAmount = turningAmount + ((targetTurn - turningAmount) * 0.5f * (float)delta);
-        RotateObjectLocal(Vector3.ModelTop, turningAmount); 
-        */
 
         // get future waypoint
         Vector3 nextWaypoint = waypoints[(currentWaypointIndex + 1) % waypoints.Count];
@@ -94,7 +82,8 @@ public partial class Glider : MeshInstance3D
         // cross product to get the perpendicular vector of direction-future direction plane
         // Length function gets the magnitude of the roll angle.
         float rollAngle = futureDirection.Cross(direction).Length();
-        RotateObjectLocal(Vector3.ModelTop, rollAngle * 2); //multiplied by 2 to increase intensity
+        turningAmount = turningAmount + ((rollAngle - turningAmount) * 0.5f * (float)delta);
+        RotateObjectLocal(Vector3.ModelTop, turningAmount * 2); //multiplied by 2 to increase intensity
         
         Scale = initialScale * (1.0f - (distance / 100.0f));
     }
