@@ -92,8 +92,16 @@ omni_attenuation = 0.8
 
 [node name="ImageTester" type="Node2D" parent="CanvasLayer"]
 texture_filter = 1
-position = Vector2(8, 0)
 script = ExtResource("3_mmy3f")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 977.0
+offset_top = 3.0
+offset_right = 1150.0
+offset_bottom = 52.0
+text = "Press 1 to toggle Snow
+Press 2 to toggle Rain"
+vertical_alignment = 2
 
 [node name="Glider" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)

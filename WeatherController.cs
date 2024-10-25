@@ -10,6 +10,8 @@ public partial class WeatherController : Node3D
     {
         snowParticles = GetNode<GpuParticles3D>("snow");
         rainParticles = GetNode<GpuParticles3D>("rain");
+        snowParticles.Emitting = false;
+        rainParticles.Emitting = false;
     }
 
     public override void _Process(double delta)
