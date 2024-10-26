@@ -1,13 +1,11 @@
-[gd_scene load_steps=17 format=4 uid="uid://4rjh2s0xglu5"]
+[gd_scene load_steps=12 format=4 uid="uid://4rjh2s0xglu5"]
 
 [ext_resource type="Script" path="res://Camera3d.cs" id="1_3fkk8"]
 [ext_resource type="Script" path="res://TerrainGenerator.cs" id="1_5moiq"]
-[ext_resource type="Script" path="res://WeatherController.cs" id="1_xl4hw"]
 [ext_resource type="Script" path="res://ImageTester.cs" id="3_mmy3f"]
 [ext_resource type="Script" path="res://Glider.cs" id="4_hi4h6"]
-[ext_resource type="Script" path="res://GpuParticles3d.cs" id="5_jfo2e"]
+[ext_resource type="Script" path="res://Smoke.cs" id="5_qaj0j"]
 [ext_resource type="Script" path="res://RedLine.cs" id="6_cxhyv"]
-[ext_resource type="Script" path="res://weatherposition.cs" id="7_cdfa2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tyfu7"]
 resource_name = "glaze"
@@ -50,28 +48,17 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_iwy5f")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1r55l"]
+[sub_resource type="SphereMesh" id="SphereMesh_qs4ld"]
+radius = 1.4
+height = 2.8
+radial_segments = 5
+rings = 6
 
-[sub_resource type="SphereMesh" id="SphereMesh_l4um4"]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5uupe"]
-emission_shape = 3
-emission_box_extents = Vector3(25, 1, 25)
-initial_velocity_min = 6.99
-initial_velocity_max = 6.99
-linear_accel_min = -2.23517e-06
-linear_accel_max = -2.23517e-06
-turbulence_noise_scale = 4.65
-
-[sub_resource type="SphereMesh" id="SphereMesh_j7ff2"]
-radius = 0.01
-height = 0.2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdc3y"]
-albedo_color = Color(0.175944, 0.805845, 0.824918, 1)
+[sub_resource type="Curve" id="Curve_1mbi2"]
+_data = [Vector2(0.0403226, 0), 0.0, 0.0, 0, 0, Vector2(0.330645, 0.296703), 0.0, 0.0, 0, 0, Vector2(1, 0.461538), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="Node3D" type="Node3D"]
-script = ExtResource("1_xl4hw")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.792141, 0.610339, 0, -0.610339, 0.792141, 0, 30, 0)
@@ -92,16 +79,8 @@ omni_attenuation = 0.8
 
 [node name="ImageTester" type="Node2D" parent="CanvasLayer"]
 texture_filter = 1
+position = Vector2(8, 0)
 script = ExtResource("3_mmy3f")
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 977.0
-offset_top = 3.0
-offset_right = 1150.0
-offset_bottom = 52.0
-text = "Press 1 to toggle Snow
-Press 2 to toggle Rain"
-vertical_alignment = 2
 
 [node name="Glider" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
@@ -109,31 +88,21 @@ mesh = SubResource("ArrayMesh_moxpy")
 skeleton = NodePath("")
 script = ExtResource("4_hi4h6")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-process_material = SubResource("ParticleProcessMaterial_1r55l")
-draw_pass_1 = SubResource("SphereMesh_l4um4")
-script = ExtResource("5_jfo2e")
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Glider"]
+transform = Transform3D(-4, 3.49691e-07, 0, -3.49691e-07, -4, 0, 0, 0, 4, 11.9107, -456.117, -73.5842)
+amount = 20
+lifetime = 0.25
+speed_scale = 0.7
+randomness = 0.54
+mesh = SubResource("SphereMesh_qs4ld")
+spread = 50.0
+gravity = Vector3(2, 10, 1)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+angular_velocity_max = 0.15
+scale_amount_curve = SubResource("Curve_1mbi2")
+script = ExtResource("5_qaj0j")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0348768, 0)
 script = ExtResource("6_cxhyv")
-
-[node name="snow" type="GPUParticles3D" parent="."]
-amount = 2500
-lifetime = 8.41
-speed_scale = 1.24
-randomness = 0.55
-visibility_aabb = AABB(-20, -4, -20, 40, 40, 40)
-process_material = SubResource("ParticleProcessMaterial_5uupe")
-draw_pass_1 = SubResource("SphereMesh_j7ff2")
-script = ExtResource("7_cdfa2")
-
-[node name="rain" type="GPUParticles3D" parent="."]
-material_override = SubResource("StandardMaterial3D_gdc3y")
-amount = 3875
-lifetime = 8.41
-speed_scale = 6.61
-randomness = 0.55
-visibility_aabb = AABB(-20, -10, -20, 40, 40, 40)
-process_material = SubResource("ParticleProcessMaterial_5uupe")
-draw_pass_1 = SubResource("SphereMesh_j7ff2")
-script = ExtResource("7_cdfa2")
